@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 150px;
+				height: 28.5px;
+			}
+			
+			span{
+				display: block;
+				float: left;
+				width: 27px;
+				height: 28.5px;
+				background-image: url(img/star.gif);
+				background-position:0px 0px;
+			}
+					
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<p id="scorep">0</p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+
+// 参数：分界点
+function changeColor(num){
+	let spanDoms = document.getElementsByTagName("span");
+	//变黄
+	for(var i=0;i<num;i++){
+		spanDoms[i].style.backgroundPosition ="0px -28.5px";
+	}
+	//变灰
+	for(var i=num;i<=4;i++){
+		spanDoms[i].style.backgroundPosition ="0px 0px";
+	}
+}	
+
+window.onload = function(){
+	let spanDoms = document.getElementsByTagName("span");
+	let score = 0;//0是无效分
+
+	//绑定进入事件
+	for(let i=0;i<spanDoms.length;i++){
+		spanDoms[i].onmouseenter = function(){
+			if(i+1>score){//3
+				changeColor(i+1);
+			}else{
+				changeColor(score);
+			}		
+		}
+	}
+
+	//绑定离开事件
+	for(let i=0;i<spanDoms.length;i++){
+		spanDoms[i].onmouseleave = function(){
+			changeColor(score);
+		}
+	}
+
+	//绑定点击事件
+	for(let i=0;i<spanDoms.length;i++){
+		spanDoms[i].onclick = function(){
+			// //分数
+			score = i+1;
+			$("#scorep").innerHTML = score;
+			changeColor(score);
+		}
+	}
+	
+}
+
+function $(str){
+	if(str.charAt(0)=="#"){
+		return document.getElementById(str.substring(1));
+	}else if(str.charAt(0)=="."){
+		return document.getElementsByClassName(str.substring(1));
+	}else{
+		return document.getElementsByTagName(str);
+	}
+}
+
+	
+</script>
+
