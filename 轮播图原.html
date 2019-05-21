@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <style>
+        #main{
+            position: relative;
+        }
+    #main>div{
+        float: left;
+        padding: 14px 0 0 14px;
+        /* background-color:red; */
+    }
+    #main>div>div{
+        padding: 10px;
+        border-radius: 6px;
+        background-color: #ccc;
+       
+    }
+    img{
+        display:block;
+    }
+    </style>
+</head>
+<body>
+    <div id="main">
+  
+    </div>
+</body>
+</html>
+<script>
+    var mytime=null;
+    var main =document.getElementById("main");
+window.onload=function (){
+
+            creatImg();
+            clearInterval(mytime);
+    //      mytime =setInterval(function(){
+    //     if(main.children[main.children.length-1].offsetHeight>0){    
+    //         clearInterval(mytime);
+    //         pai_xu();
+           
+            
+    //     }
+    // },16)
+    pai_xu();
+
+}
+window.onscroll=function(){
+    var client_height =document.documentElement.clientHeight || document.body.clientHeight;
+    var scroll_top =document.documentElement.scrollTop || document.body.scrollTop;
+    var img =document.getElementsByTagName("img");
+    if(client_height+scroll_top>=img[img.length-1].parentNode.parentNode.offsetTop){
+        for(var i=0;i<10;i++){
+        var img_height =   parseInt(Math.random()*(400-90+1)+90);
+        var big_div = document.createElement("div");
+        var small_div = document.createElement("div");
+        var img = document.createElement("img");
+        img.src="./img/"+(i+1)+".jpg";
+        img.style.width=180+"px";
+        img.style.height=img_height+"px";
+        small_div.appendChild(img);
+        big_div.appendChild(small_div);
+        main.appendChild(big_div);
+        }
+        pai_xu();
+    }
+    
+}
+
+function creatImg(){
+    for(var i=0;i<53;i++){
+        var img_height =   parseInt(Math.random()*(400-90+1)+90);
+        var big_div = document.createElement("div");
+        var small_div = document.createElement("div");
+        var img = document.createElement("img");
+        img.src="./img/"+(i+1)+".jpg";
+        img.style.width=180+"px";
+        img.style.height=img_height+"px";
+        small_div.appendChild(img);
+        big_div.appendChild(small_div);
+        main.appendChild(big_div);
+    }
+
+   
+}
+function pai_xu(){
+    var img_height=[],min_height=0,min_index=0,col,box_height;
+    var client_width = document.documentElement.clientWidth || document.body.clientWidth;
+    var box_width =main.children[0].offsetWidth;
+    col = parseInt(client_width/box_width);
+    main.style.width=col*box_width+"px";
+    main.style.margin="0 auto";
+    for(var i=0;i<main.children.length;i++){
+        box_height=main.children[i].offsetHeight;
+        if(i<col){          
+            img_height.push(box_height);
+           
+        } 
+        else {
+            min_height=Math.min.apply(this,img_height);
+            min_index=img_height.indexOf(min_height);
+           
+            
+            main.children[i].style.position="absolute";
+            main.children[i].style.left=min_index*box_width+"px";
+            main.children[i].style.top=min_height+"px";
+            img_height[min_index]=min_height+box_height;
+        }
+    }
+}
+
+
+
+
+
+</script>
