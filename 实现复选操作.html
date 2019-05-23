@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p>请选择你的爱好：</p>
+			<input type="checkbox" id="choe">全选/全不选
+		<div>
+			<input type="checkbox" name="dog">萨摩耶
+			<input type="checkbox" name="dog">哈士奇
+			<input type="checkbox" name="dog">金毛
+			<input type="checkbox" name="dog">拉布拉多
+			<input type="checkbox" name="dog">柯基
+			<input type="checkbox" name="dog">柴犬
+			<input type="checkbox" name="dog">秋田
+		</div>
+		<input type="button" value="全选" id="btnA">
+		<input type="button" value="全不选" id="btnB">
+		<input type="button" value="反选" id="btnC">
+	</body>
+</html>
+<script type="text/javascript">
+	var choe = document.getElementById("choe");
+	var dog =  document.getElementsByName("dog");
+	var btnA = document.getElementById("btnA");
+	var btnB = document.getElementById("btnB");
+	var btnC = document.getElementById("btnC");
+	btnA.onclick = function(evet){			//for循环全部选择;
+		for(var i=0; i<dog.length; i++){
+			dog[i].checked = "checked";
+		}
+	}
+	btnB.onclick = function(evet){			//for循环全部为空;
+		for(var i=0; i<dog.length; i++){
+			dog[i].checked = "";
+		}
+	}
+	btnC.onclick = function(evet){			//for循环if判断选中的true / false;
+		for(var i=0; i<dog.length; i++){
+			if(dog[i].checked ){
+				dog[i].checked = "";
+			}else{
+				dog[i].checked = "checked";
+			}	
+		}
+	}	
+	var dogs = true;                     //传入第三个变量,使用循环判断选中的对错;
+	choe.onclick=function(){
+			if(dogs ==true){
+				for(var i=0; i<dog.length; i++){
+				dog[i].checked = true;
+				}
+				dogs  = false;
+			}else if(dogs == false){
+				for(var i=0;i<dog.length;i++){
+					dog[i].checked = false;
+				}
+				dogs  = true;
+			}
+		}
+</script>
