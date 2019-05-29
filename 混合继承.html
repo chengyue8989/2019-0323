@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //原型继承：将父类公有+私有都作为子类公有
+    //call继承：将父类私有作为子类私有
+    //混合继承：利用原型链继承共有的属性和方法，利用Call/Apply来初始化自己的但是和父类型同名的属性或方法。
+    function Animal(age,weight) {
+        this.age=age;
+        this.weight=weight;
+    }
+    Animal.prototype.eat=function (str) {
+        console.log(str);
+    }
+    function Person(skill) {
+        this.skill=skill;
+        Animal.call(this,18,50);
+    }
+    Person.prototype=new Animal(19,60);
+    Person.prototype.work=function(str1){
+        console.log("007今年"+this.age+"岁了，他会"+str1+"用来"+this.skill)
+    };
+    let p1=new Person("code");
+    console.log(p1.age);
+    p1.eat("火锅");
+    p1.work("Javascript");
+</script>
