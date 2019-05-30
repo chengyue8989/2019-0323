@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //构造函数的单例模式
+   // function SingleTon(id,name) {
+   //      if(SingleTon.unique===undefined){
+   //          this.id=id;
+   //          this.name=name;
+   //          SingleTon.unique=this;//自定义属性
+   //      }else{
+   //          return SingleTon.unique;
+   //      }
+   //  }
+   //  let s1=new SingleTon(12,"玫瑰");
+   //  let s2=new SingleTon(13,"康乃馨");
+   // console.log(s1 === s2);
+   // console.log(s2.id,s2.name,s1.id);
+    //闭包形式的单例模式
+    // let singleton=(function (id,name) {
+    //     var unique;
+    //     function Singleton(id,name) {
+    //         this.id=id;
+    //         this.name=name;
+    //     }
+    //     if(unique===undefined){
+    //         unique=new Singleton(id,name);
+    //     }
+    //     return function () {
+    //         return unique;
+    //     }
+    // })(1,"牡丹");//自运行
+    // let s1=singleton();
+    // let s2=singleton();
+    // console.log(s1 === s2);
+    // console.log(s1.id,s2.id);
+    //
+    let singleton=function (id,name) {
+        var unique;
+        function Singleton(id,name) {
+            this.id=id;
+            this.name=name;
+        }
+        if(unique===undefined){
+            unique=new Singleton(id,name);
+        }
+        return function () {
+            return unique;
+        }
+    };
+    let s1=singleton(1,"牡丹")();//每次调用，函数会重新预解析
+    let s2=singleton(1,"牡丹")();
+    console.log(s1 === s2);//false
+    console.log(s1.id,s2.id);
+    //闭包
+    // function big() {
+    //     let n=100,m=200;
+    //     return function () {
+    //         n++;
+    //         console.log(m);//200
+    //         console.log(n);//101
+    //         return n;
+    //     }
+    // }
+    // big()();
+    // big()();
+    // let big1=big();
+    // big1();
+    // big1();
+</script>
