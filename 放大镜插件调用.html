@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #smallBox{
+            width: 400px;
+            height: 400px;
+            background: url(img/img4.jpg) no-repeat;
+            background-size: 400px 400px;
+            position: relative;
+            top: 100px;
+            left: 80px;
+            cursor: move;
+        }
+        #bigBox{
+            width: 400px;
+            height: 400px;
+            background: url(img/img4.jpg) no-repeat;
+            background-size: 1600px 1600px;
+            position: absolute;
+            top: 100px;
+            left: 550px;
+            display: none;
+        }
+        #mask{
+            width: 100px;
+            height: 100px;
+            background:lightskyblue;
+            opacity: 0.4;
+            position: absolute;
+            display: none;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div id="smallBox">
+        <div id="mask">
+
+        </div>
+    </div>
+    <div id="bigBox">
+
+    </div>
+<!--    -->
+    <div id="smallBox1">
+        <div id="mask1">
+
+        </div>
+    </div>
+    <div id="bigBox1">
+
+    </div>
+</body>
+</html>
+<script src="js/selector.js"></script>
+<script src="js/放大镜插件.js"></script>
+<script>
+    let smallBox=Selector.$("#smallBox");
+    let bigBox=Selector.$("#bigBox");
+    let mask=Selector.$("#mask");
+
+    new Magnifying(smallBox,bigBox,mask).bindhtml();
+
+</script>
