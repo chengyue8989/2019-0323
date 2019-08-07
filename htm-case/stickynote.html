@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sticky-notes</title>
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			height: 600px;
+			background-color: #ccc;
+			display:flex;
+			flex-wrap:wrap;
+			padding:40px 0 0 40px;
+		}
+		.box a{
+			display: inline-block;
+			width: 180px;
+			height: 200px;
+			margin:10px 10px;
+			text-decoration: none;
+			color: #000;
+			padding-left: 20px;
+			border-radius: 10px;
+		}
+		.box a:nth-of-type(2n){
+			background-color: lightgreen;
+		}
+		.box a:nth-of-type(2n+1){
+			background-color: lightblue;
+		}
+		.box a:nth-of-type(4),.box a:nth-of-type(7){
+			background-color: lightyellow;
+		}
+		.box a:nth-of-type(2n){
+			transform: skew(-8deg,8deg);
+		}
+		.box a:nth-of-type(2n+1){
+			transform: skew(4deg,-4deg);
+		}
+		.box a:nth-of-type(6){
+			transform: skew(2deg,-2deg);
+		}
+		.box a:nth-of-type(9){
+			transform: skew(6deg,-6deg);
+		}
+		.box a:hover,.box a:focus {
+			transform: scale(1.2);
+			box-shadow: 2px 2px 10px #ccc,4px 4px 14px #ccc,6px 6px 16px #333,8px 8px 20px #333;
+			z-index: 2;
+		}
+		/*.box a:target {
+			transform: scale(1.2);
+			transform: skew(0);
+		}*/
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<a href="##">
+			<h4>Title #1</h4>
+			<p>Text</p>
+			<p>Content #1</p>
+		</a>
+		<a href="##">
+			<h4>Title #2</h4>
+			<p>Text</p>
+			<p>Content #2</p>
+		</a>
+		<a href="##">
+			<h4>Title #3</h4>
+			<p>Text</p>
+			<p>Content #3</p>
+		</a>
+		<a href="##">
+			<h4>Title #4</h4>
+			<p>Text</p>
+			<p>Content #4</p>
+		</a>
+		<a href="##">
+			<h4>Title #5</h4>
+			<p>Text</p>
+			<p>Content #5</p>
+		</a>
+		<a href="##">
+			<h4>Title #6</h4>
+			<p>Text</p>
+			<p>Content #6</p>
+		</a>
+		<a href="##">
+			<h4>Title #7</h4>
+			<p>Text</p>
+			<p>Content #7</p>
+		</a>
+		<a href="##">
+			<h4>Title #8</h4>
+			<p>Text</p>
+			<p>Content #8</p>
+		</a>
+		<a href="##">
+			<h4>Title #9</h4>
+			<p>Text</p>
+			<p>Content #9</p>
+		</a>
+	</div>
+</body>
+</html>
